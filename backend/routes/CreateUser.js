@@ -67,7 +67,6 @@ router.post("/loginuser",
             }
         }
         const token=jwt.sign(data,JWT_SECRET);
-
         return res.json({success:true,token:token});
     }catch(err){
         console.log(err);
@@ -76,3 +75,4 @@ router.post("/loginuser",
 });
 
 export default router;
+
