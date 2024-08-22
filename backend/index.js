@@ -5,11 +5,21 @@ import DisplayData from "./routes/DisplayData.js";
 import OrderData from "./routes/OrderData.js";
 import MyOrderData from "./routes/MyOrderData.js";
 import dotenv from "dotenv";
+import path from "path";
+import { fileURLToPath } from "url";
+
+//resolving dirname for ES module
+const __filename=fileURLToPath(import.meta.url);
+const __dirname=path.dirname(__filename);
+
+//use the client app
+app.use(express.static(path.join(__dirname,"/client/dist")));
+app.get("*",(req,res)=>{
+  res.sendFile(path.join(__dirname,"client/dist/index.html"));
+});
 
 dotenv.config({ path: './.env' });
 
-console.log("ENV Loaded:", process.env);
-// console.log(process.env.PORT);
 const app=express();
 connectDB();
 
