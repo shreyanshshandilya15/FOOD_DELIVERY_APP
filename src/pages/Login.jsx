@@ -2,16 +2,14 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
-
 export default function Login() {
 
   let navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-
   const handlesubmit = async (e) => {
-    e.preventDefault();
+  e.preventDefault();
 
     const response = await fetch("http://localhost:4000/api/v1/loginuser", {
       method: 'POST',

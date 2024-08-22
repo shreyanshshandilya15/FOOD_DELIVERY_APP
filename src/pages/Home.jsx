@@ -2,11 +2,15 @@ import { useEffect, useState } from "react"
 import Card from "../components/card/Card"
 import Footer from "../components/footer/Footer"
 import Navbar from "../components/navbar/Navbar"
+import Burgerimage from "../images/burger.jpg";
+import Pizzaimage from "../images/pizza.jpg";
+import Biryaniimage from "../images/biryani.jpg";
 
 export default function Home() {
   const [search, setSearch] = useState('');
   const [foodProduct, setFoodProduct] = useState([]);
   const [foodCat, setFoodCat] = useState([]);
+  try{
   const getdata = async () => {
     let response = await fetch("http://localhost:4000/api/v1/displayfood", {
       method: "POST",
@@ -15,16 +19,19 @@ export default function Home() {
       }
     });
     response = await response.json();
-
+   console.log(response);
     setFoodProduct(response[0]);
     setFoodCat(response[1]);
-
   }
 
   useEffect(() => {
     getdata();
   }, []);
-
+}
+  catch(erro){
+    console.log("error");
+  }
+  
   return (
     <div>
       <div ><Navbar /></div>
@@ -37,13 +44,13 @@ export default function Home() {
               </div>
             </div>
             <div className="carousel-item active">
-              <img src="https://source.unsplash.com/random/200×200/?burger" className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover" }} alt="..." />
+              <img src={Burgerimage}className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover", height:"70vh"}} alt="..." />
             </div>
             <div className="carousel-item">
-              <img src="https://source.unsplash.com/random/200×200/?samosa" className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover" }} alt="..." />
+              <img src={Pizzaimage} className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover",height:"70vh" }} alt="..." />
             </div>
             <div className="carousel-item">
-              <img src="https://source.unsplash.com/random/200×200/?biryani" className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover" }} alt="..." />
+              <img src={Biryaniimage} className="d-block w-100" style={{ filter: "brightness(30%)", objectFit: "cover" , height:"70vh"}} alt="..." />
             </div>
           </div>
           <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
@@ -58,15 +65,15 @@ export default function Home() {
       </div>
       <div className="container" >
         {
-          foodCat != [] ?
+          foodCat!=[] ?
             foodCat.map((cat) => {
               return (
                 <div className=' row mb-3' key={cat._id}>
                   <div className="fs-3">{cat.CategoryName}</div>
                   <hr />
                   {foodProduct != [] ?
-                    foodProduct.filter((item) => (item.CategoryName == cat.CategoryName) && (item.name.toLowerCase().includes(search.toLocaleLowerCase())))
-                      .map(filteritem => {
+                    foodProduct?.filter((item) => (item.CategoryName == cat.CategoryName) && (item.name.toLowerCase().includes(search.toLocaleLowerCase())))
+                      ?.map(filteritem => {
                         return (
                           <div key={filteritem._id} className='col-12 col-md-4 col-lg-3'>
                             <Card

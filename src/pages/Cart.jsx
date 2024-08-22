@@ -57,7 +57,7 @@ export default function Cart() {
                        <td>{food.qty}</td>
                        <td>{food.size}</td>
                        <td>{food.price}</td>
-                       <td><button type="button" className="btn p-0"><img alt="delete" onClick={()=>{dispatch({type:"REMOVE",index:index})}} /></button></td>
+                       <td><button type="button" className="btn p-0"><span  onClick={()=>{dispatch({type:"REMOVE",index:index})}} >Delete</span></button></td>
                     </tr>
                    )
                 })}

@@ -1,4 +1,4 @@
-import './Card.scss'
+import './Card.scss';
 import { useCart, useDispatchCart } from '../ContextReducer';
 import { useState ,useRef,useEffect} from 'react';
 
@@ -22,12 +22,12 @@ export default function Card({ fooditems, selector }) {
                 await dispatch({type:"UPDATE",id:fooditems._id,price:finalprice,qty:qty})
                 return
             }else if(food.size!=size){
-                await dispatch({ type: "ADD", id: fooditems._id, name: fooditems.name, qty: qty, size: size, price: finalprice })
+                await dispatch({ type: "ADD", id: fooditems._id, name: fooditems.name, qty: qty, size: size, price: finalprice,img:fooditems.img })
            return
             }
             return
         }
-        await dispatch({ type: "ADD", id: fooditems._id, name: fooditems.name, qty: qty, size: size, price: finalprice })
+        await dispatch({ type: "ADD", id: fooditems._id, name: fooditems.name, qty: qty, size: size, price: finalprice,img:fooditems.img  })
     }
     let finalprice=qty*parseInt(selector[0][size]);
 
