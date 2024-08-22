@@ -8,6 +8,10 @@ import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
 
+dotenv.config({ path: './.env' });
+
+const app=express();
+
 //resolving dirname for ES module
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__filename);
@@ -18,9 +22,6 @@ app.get("*",(req,res)=>{
   res.sendFile(path.join(__dirname,"client/dist/index.html"));
 });
 
-dotenv.config({ path: './.env' });
-
-const app=express();
 connectDB();
 
 app.use((req,res,next)=>{
