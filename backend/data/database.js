@@ -1,5 +1,4 @@
 import mongoose from "mongoose";
-import global from "@vitejs/plugin-react-swc";
 
 console.log(process.env.MONGO_URL);
 
