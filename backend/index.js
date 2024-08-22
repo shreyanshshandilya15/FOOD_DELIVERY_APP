@@ -33,6 +33,8 @@ app.get("/",(req,res)=>{
 });
 
 const port=process.env.PORT || 4000;
-app.listen(port,()=>{
-    console.log(`server is running on port ${port} successfully !!`);
-})
+const host = '0.0.0.0';
+app.listen(port,host,()=>{
+    console.log(`server is running on http://${host}:${port} successfully !!`);
+});
+
