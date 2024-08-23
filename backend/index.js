@@ -7,6 +7,7 @@ import MyOrderData from "./routes/MyOrderData.js";
 import dotenv from "dotenv";
 import path from "path";
 import { fileURLToPath } from "url";
+import cors from "cors";
 
 dotenv.config({ path: './.env' });
 
