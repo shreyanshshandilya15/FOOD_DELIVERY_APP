@@ -34,7 +34,12 @@ const __dirname=path.dirname(__filename);
 //   credentials: true, // Allow cookies and authorization headers if needed
 // };
 
-app.use(cors());
+app.use(cors({
+  origin: '*', // Allow all origins
+  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow all methods
+  credentials: true, // Allow cookies and auth headers
+}));
+
 app.use(express.json());
 app.use("/api/v1",UserRoutes);
 app.use("/api/v1",DisplayData);
