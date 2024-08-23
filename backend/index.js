@@ -17,17 +17,11 @@ const app=express();
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__filename);
 
-//use the client app
-app.use(express.static(path.join(__dirname,"/client/dist")));
-app.get("*",(req,res)=>{
-  res.sendFile(path.join(__dirname,"client/dist/index.html"));
-});
-
-connectDB();
 const allowedOrigins = [
   'http://localhost:5173', // Local development
-  'https://food-delivery-app-byh4.onrender.com/' // Your deployed frontend
+  'https://food-delivery-app-byh4.onrender.com' // Your deployed frontend
 ];
+
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -47,6 +41,13 @@ app.use("/api/v1",DisplayData);
 app.use("/api/v1",OrderData);
 app.use("/api/v1",MyOrderData);
 
+//use the client app
+app.use(express.static(path.join(__dirname,"/client/dist")));
+app.get("*",(req,res)=>{
+  res.sendFile(path.join(__dirname,"client/dist/index.html"));
+});
+
+connectDB();
 app.get("/",(req,res)=>{
     res.send("hello world");
 });
