@@ -17,28 +17,27 @@ const app=express();
 const __filename=fileURLToPath(import.meta.url);
 const __dirname=path.dirname(__filename);
 
-// const allowedOrigins = [
-//   'http://localhost:5173', // Local development
-//   'https://food-delivery-app-byh4.onrender.com' // Your deployed frontend
-// ];
+const allowedOrigins = [
+  'http://localhost:5173', // Local development
+  'https://food-delivery-app-byh4.onrender.com' // Your deployed frontend
+];
 
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
+  credentials: true, // Allow cookies and authorization headers if needed
+};
 
-// const corsOptions = {
-//   origin: function (origin, callback) {
-//     if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
-//       callback(null, true);
-//     } else {
-//       callback(new Error('Not allowed by CORS'));
-//     }
-//   },
-//   credentials: true, // Allow cookies and authorization headers if needed
-// };
-
-app.use(cors({
-  origin: '*', // Allow all origins
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow all methods
-  credentials: true, // Allow cookies and auth headers
-}));
+// app.use(cors({
+//   origin: '*', // Allow all origins
+//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow all methods
+//   credentials: true, // Allow cookies and auth headers
+// }));
 
 app.use(express.json());
 app.use("/api/v1",UserRoutes);
