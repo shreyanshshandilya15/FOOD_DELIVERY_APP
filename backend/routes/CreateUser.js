@@ -4,8 +4,7 @@ const router=Express.Router();
 import {body,validationResult} from 'express-validator';
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
-const jwt_key=process.env.JWT_SECRET;
-    
+
 router.post("/createuser",
    [
     body('name',"Usrename must be greater than 5").isLength({min:5}),
@@ -66,13 +65,12 @@ router.post("/loginuser",
                 _id:userdata._id
             }
         }
-        const token=jwt.sign(data,jwt_key);
+        const token=jwt.sign(data,process.env.JWT_SECRET);
         return res.json({success:true,token:token});
-    }catch(err){
-        console.log(err);
+    }catch(error){
+        console.log(error);
         res.json({success:false});
     }
 });
 
 export default router;
-
