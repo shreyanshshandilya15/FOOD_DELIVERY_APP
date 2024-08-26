@@ -24,17 +24,18 @@ const allowedOrigins = [
 
 const corsOptions = {
   origin: function (origin, callback) {
-    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+    console.log(`Request from origin: ${origin}`); // Log the origin
+    if (!origin || allowedOrigins.indexOf(origin) !== -1) {
       callback(null, true);
     } else {
+      console.log(`Blocked by CORS: ${origin}`);
       callback(new Error('Not allowed by CORS'));
     }
   },
-  credentials: true, // Allow cookies and authorization headers if needed
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
-
 app.use(express.json());
 app.use("/api/v1",UserRoutes);
 app.use("/api/v1",DisplayData);
