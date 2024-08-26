@@ -33,11 +33,7 @@ const corsOptions = {
   credentials: true, // Allow cookies and authorization headers if needed
 };
 
-// app.use(cors({
-//   origin: '*', // Allow all origins
-//   methods: ['GET', 'POST', 'PUT', 'DELETE'], // Allow all methods
-//   credentials: true, // Allow cookies and auth headers
-// }));
+app.use(cors(corsOptions));
 
 app.use(express.json());
 app.use("/api/v1",UserRoutes);
