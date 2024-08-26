@@ -19,7 +19,7 @@ const __dirname=path.dirname(__filename);
 
 const allowedOrigins = [
   'http://localhost:5173', // Local development
-  'https://food-delivery-app-byh4.onrender.com' // Your deployed frontend
+  'https://food-delivery-app-byh4.onrender.com/' // Your deployed frontend
 ];
 
 const corsOptions = {
@@ -57,4 +57,3 @@ const port=process.env.PORT || 4000;
 app.listen(port,()=>{
     console.log(`server is running on port ${port} successfully !!`);
 });
-

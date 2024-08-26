@@ -12,7 +12,7 @@ export default function Home() {
   const [foodCat, setFoodCat] = useState([]);
   try{
   const getdata = async () => {
-    let response = await fetch("http://localhost:4000/api/v1/displayfood", {
+    let response = await fetch("https://food-delivery-app-byh4.onrender.com/api/v1/displayfood", {
       method: "POST",
       headers: {
         'Content-Type': 'application/json'
