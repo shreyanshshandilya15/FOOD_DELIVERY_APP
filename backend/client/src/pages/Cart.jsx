@@ -16,7 +16,7 @@ export default function Cart() {
    const handleCheckOut=async()=>{
          let userEmail=localStorage.getItem("userEmail");
          console.log(userEmail);
-         let response=await fetch("http://localhost:4000/api/v1/orderData",{
+         let response=await fetch("https://food-delivery-app-byh4.onrender.com/api/v1/orderData",{
             method:"POST",
             headers:{
                 'Content-Type':"application/json"

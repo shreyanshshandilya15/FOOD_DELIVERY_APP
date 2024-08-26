@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 
 export default function SignUp() {
-
     const navigate=useNavigate();
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
@@ -13,7 +12,7 @@ export default function SignUp() {
     const handlesubmit = async (e) => {
         e.preventDefault();
                 try{
-                    const response = await fetch("http://localhost:4000/api/v1/createuser", {
+                    const response = await fetch("https://food-delivery-app-byh4.onrender.com/api/v1/createuser", {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json'

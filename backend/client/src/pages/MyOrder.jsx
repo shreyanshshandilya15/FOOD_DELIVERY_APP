@@ -9,7 +9,7 @@ export default function MyOrder() {
     const fetchMyOrder = async () => {
         console.log(localStorage.getItem('userEmail'));
         try{
-          await fetch("http://localhost:4000/api/v1/myorderData", {
+          await fetch("https://food-delivery-app-byh4.onrender.com/api/v1/myorderData", {
             // credentials: 'include',
             // Origin:"http://localhost:3000/login",
             method: 'POST',
