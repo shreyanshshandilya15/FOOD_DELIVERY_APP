@@ -5,6 +5,7 @@ export const connectDB=async()=>{
        await mongoose.connect(process.env.MONGO_URL,{
        dbName:"orderfoodmern",
     });
+      console.log(`connected with database ${mongoose.connection.host} succesfully`);
       const fetched_data = await mongoose.connection.db.collection("food_products")
       .find({})
       .toArray();

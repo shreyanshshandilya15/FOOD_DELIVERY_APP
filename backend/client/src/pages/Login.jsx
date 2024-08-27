@@ -11,7 +11,7 @@ export default function Login() {
   const handlesubmit = async (e) => {
   e.preventDefault();
 
-    const response = await fetch("https://food-delivery-app-byh4.onrender.com/api/v1/loginuser", {
+    const response = await fetch(`${import.meta.env.VITE_FRONTEND_URL}/api/v1/loginuser`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
